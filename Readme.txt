@@ -1,3 +1,6 @@
+這是一個UNO AI 測試工具
+用Unity 3D 製作而成
+
 關於玩家控制：
 1.沒有fast狀況下：
 
@@ -16,21 +19,10 @@
 ****注意****
 一旦出錯牌，遊戲就崩潰了，按"reset"重置。
 
-７／２７
-修正game.cs中drawtwo導致出牌有誤的問題
-修正heuristicV1的演算法
-修正AIIRandom對於黑色是否能出牌的判斷
+需要更改AI或是手動控制，需要至game.cs更改
 
-測試場數:328(時間不足)
-player1:HeuristicV1	100(30.48%)
-player2:AllRandom	78(23.78%)
-player3:AllRandom	65(19.81%)
-player4:AllRandom	85(25.91%)
-
-MT:
+LOG:
+UI 修正
 玩家位置隨機交換
-V2跟V3修正
-整理數據
-SEARCH
-
-4組數據(每個對RANDOM + 每種一隻)
+Heurisitc V2跟Heuristic V3修正
+SEARCH AI增加至搜尋兩層
