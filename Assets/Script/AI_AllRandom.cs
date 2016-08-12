@@ -24,29 +24,22 @@ public class AI_AllRandom : MonoBehaviour {
 			}
 		} 
 		else {
-			if(_GetNowCard().function == global::Card.CardFunction.free & hands.Exists (x => x.color == game.nowCard.color)){
-				List<Card> Z = hands.FindAll (x => x.color == game.nowCard.color||x.function==global::Card.CardFunction.Wild);
-				Card Tk = Z[Random.Range(0,Z.Count-1)];
-				int zi = hands.FindIndex(x=>x.function ==Tk.function & x.color == Tk.color);
-				hands.RemoveAt(zi);
-				return Tk;
-			}
-			else if (hands.Exists (x => x.color == game.nowCard.color||x.function == game.nowCard.function||x.function==global::Card.CardFunction.Wild)) {
-				List<Card> Z = hands.FindAll (x => x.color == game.nowCard.color||x.function == game.nowCard.function||x.function==global::Card.CardFunction.Wild);
-				Card Tk = Z[Random.Range(0,Z.Count-1)];
-				int zi = hands.FindIndex(x=>x.function ==Tk.function & x.color == Tk.color);
-				hands.RemoveAt(zi);
-				return Tk; 
+			List<Card> Z = new List<Card>();
+			if (hands.Exists (x => x.color == game.nowCard.color||x.function == game.nowCard.function)) {
+				Z = hands.FindAll (x => x.color == game.nowCard.color||x.function == game.nowCard.function);
 			} 
-			else if(hands.Exists (x => x.function == global::Card.CardFunction.WildDrawFour)){
-				int Z = hands.FindIndex (x => x.function == global::Card.CardFunction.WildDrawFour);
-				Card Tk = hands[Z];
-				hands.RemoveAt(Z);
-				return Tk;
+			else if(hands.Exists (x => x.function == global::Card.CardFunction.WildDrawFour ||x.function==global::Card.CardFunction.Wild ) & hands.Count != 1){
+				List<Card> Z2 = hands.FindAll (x => x.function == global::Card.CardFunction.WildDrawFour ||x.function==global::Card.CardFunction.Wild );
+				foreach(Card c in Z2)
+					Z.Add(c);
 			}
-			else {
-				return _NoCard(); 
-			}
+			if(Z.Count ==0)
+				return _NoCard();
+
+			Card Tk = Z[Random.Range(0,Z.Count-1)];
+			int zi = hands.FindIndex(x=>x.function ==Tk.function & x.color == Tk.color);
+			hands.RemoveAt(zi);
+			return Tk; 
 		}
 	} //pick a Card to Card
 	public void getCard(Card newcard){

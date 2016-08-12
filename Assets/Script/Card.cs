@@ -11,12 +11,7 @@ public class Card : MonoBehaviour {
 		None
 	};
 	public enum CardFunction{
-		Skip,
-		Reverse,
-		DrawTwo,
-		Wild,
-		WildDrawFour,
-		None,
+		zero,
 		one,
 		two,
 		three,
@@ -26,7 +21,12 @@ public class Card : MonoBehaviour {
 		seven,
 		eight,
 		nine,
-		zero,
+		Skip,
+		Reverse,
+		DrawTwo,
+		Wild,
+		WildDrawFour,
+		None,
 		free
 	};
 	public CardColor color;
